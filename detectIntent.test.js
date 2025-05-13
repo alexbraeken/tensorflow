@@ -3,17 +3,33 @@ const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 
 describe('detectIntent()', () => {
+    let model;
+
     beforeAll(async () => {
-        let model
         try {
             const modelPath = path.join(__dirname, './models/model.json');
+            
+            // Debug: Check if file exists and show first 100 chars
+            const fs = require('fs');
+            if (!fs.existsSync(modelPath)) {
+                throw new Error(`Model file not found at ${modelPath}`);
+            }
+            model = await tf.loadLayersModel(`file://${modelPath}`);
+            console.log('Model loaded successfully');
+            const fileContent = fs.readFileSync(modelPath, 'utf8');
+            console.log('File exists. First 100 chars:', fileContent.substring(0, 100));
+            
+            // Debug: Validate JSON
+            JSON.parse(fileContent); // This should throw if invalid
+            console.log('JSON is valid');
+            
             model = await tf.loadLayersModel(`file://${modelPath}`);
             console.log('Model loaded successfully');
         } catch (error) {
-          console.error('Model loading failed:', error);
-          throw error;
+            console.error('Model loading failed:', error);
+            throw error;
         }
-      });
+    });
 
   it('detects property search with location and price', async () => {
     const result = await detectIntent("Show me properties in SoHo under $3000");

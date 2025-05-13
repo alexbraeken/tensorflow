@@ -12,21 +12,20 @@
             "config": {
               "name": "dense",
               "trainable": true,
-              "batch_input_shape": [null, 3],  // <-- Added input shape
+              "batch_input_shape": [null, 10],
               "dtype": "float32",
-              "units": 1,
-              "activation": "linear",
-              "use_bias": true,
-              "kernel_initializer": {
-                "class_name": "GlorotUniform",
-                "config": {
-                  "seed": null
-                }
-              },
-              "bias_initializer": {
-                "class_name": "Zeros",
-                "config": {}
-              }
+              "units": 8,
+              "activation": "relu"
+            }
+          },
+          {
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_1",
+              "trainable": true,
+              "dtype": "float32",
+              "units": 3,
+              "activation": "softmax"
             }
           }
         ]
@@ -40,12 +39,22 @@
         "weights": [
           {
             "name": "dense/kernel",
-            "shape": [3, 1],
+            "shape": [10, 8],
             "dtype": "float32"
           },
           {
             "name": "dense/bias",
-            "shape": [1],
+            "shape": [8],
+            "dtype": "float32"
+          },
+          {
+            "name": "dense_1/kernel",
+            "shape": [8, 3],
+            "dtype": "float32"
+          },
+          {
+            "name": "dense_1/bias",
+            "shape": [3],
             "dtype": "float32"
           }
         ]
