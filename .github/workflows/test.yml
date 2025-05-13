@@ -29,8 +29,8 @@ jobs:
 
       - name: Verify model exists
         run: |
-          ls -la /model/
-          if [ ! -f "/model/model.json" ]; then
+          ls -la ./models/
+          if [ ! -f "./models/model.json" ]; then
             echo "Model file not found!"
             exit 1
           fi

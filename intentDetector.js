@@ -5,7 +5,7 @@ let model;
 
 async function loadModel() {
   if (!model) {
-    const modelPath = path.join(__dirname, '../model/model.json');
+    const modelPath = path.join(__dirname, './models/model.json');
     model = await tf.loadLayersModel(`file://${modelPath}`);
   }
   return model;
