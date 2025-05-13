@@ -1,10 +1,12 @@
 const tf = require('@tensorflow/tfjs-node');
+const path = require('path');
 
 let model;
 
 async function loadModel() {
   if (!model) {
-    model = await tf.loadLayersModel('./model/model.json');
+    const modelPath = path.join(__dirname, '../model/model.json');
+    model = await tf.loadLayersModel(`file://${modelPath}`);
   }
   return model;
 }
