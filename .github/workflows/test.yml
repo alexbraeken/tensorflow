@@ -23,14 +23,17 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
       - name: Clean install
         run: npm ci
-       - name: Verify model exists
+
+      - name: Verify model exists
         run: |
           ls -la ./model/
           if [ ! -f "./model/model.json" ]; then
             echo "Model file not found!"
             exit 1
           fi
+
       - name: Run tests
         run: npm test
