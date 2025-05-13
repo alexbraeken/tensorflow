@@ -1,12 +1,14 @@
 const { detectIntent } = require('./intentDetector');
 const tf = require('@tensorflow/tfjs-node');
+const path = require('path');
 
 describe('detectIntent()', () => {
     beforeAll(async () => {
         let model
         try {
-          model = await tf.loadLayersModel('file://./models/model.json');
-          console.log('Model loaded successfully');
+            const modelPath = path.join(__dirname, './models/model.json');
+            model = await tf.loadLayersModel(`file://${modelPath}`);
+            console.log('Model loaded successfully');
         } catch (error) {
           console.error('Model loading failed:', error);
           throw error;
