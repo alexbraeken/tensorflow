@@ -1,0 +1,15 @@
+{
+  "name": "intent-detector",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "install": "npm install @tensorflow/tfjs-node",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
