@@ -12,6 +12,7 @@
             "config": {
               "name": "dense",
               "trainable": true,
+              "batch_input_shape": [null, 3],  // <-- Added input shape
               "dtype": "float32",
               "units": 1,
               "activation": "linear",
@@ -25,12 +26,7 @@
               "bias_initializer": {
                 "class_name": "Zeros",
                 "config": {}
-              },
-              "kernel_regularizer": null,
-              "bias_regularizer": null,
-              "activity_regularizer": null,
-              "kernel_constraint": null,
-              "bias_constraint": null
+              }
             }
           }
         ]

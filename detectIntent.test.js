@@ -2,9 +2,16 @@ const { detectIntent } = require('./intentDetector');
 const tf = require('@tensorflow/tfjs-node');
 
 describe('detectIntent()', () => {
-  beforeAll(() => {
-    tf.env().set('IS_TEST', true);
-  });
+    beforeAll(async () => {
+        let model
+        try {
+          model = await tf.loadLayersModel('file://./models/model.json');
+          console.log('Model loaded successfully');
+        } catch (error) {
+          console.error('Model loading failed:', error);
+          throw error;
+        }
+      });
 
   it('detects property search with location and price', async () => {
     const result = await detectIntent("Show me properties in SoHo under $3000");

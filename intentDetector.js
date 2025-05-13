@@ -14,6 +14,9 @@ async function loadModel() {
 async function detectIntent(text) {
   await loadModel();
 
+
+  model.summary();
+  
   const lower = text.toLowerCase();
 
   if (/properties in (.+?) under \$?(\d+)/i.test(lower)) {
