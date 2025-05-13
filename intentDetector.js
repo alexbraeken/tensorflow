@@ -4,7 +4,7 @@ let model;
 
 async function loadModel() {
   if (!model) {
-    model = await tf.loadLayersModel('file://./model/model.json');
+    model = await tf.loadLayersModel('./model/model.json');
   }
   return model;
 }
